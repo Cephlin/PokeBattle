@@ -62,3 +62,7 @@ include/
 
 # Pip
 pip-selfcheck.json
+
+# PyCharm
+.idea/
+migrations/
