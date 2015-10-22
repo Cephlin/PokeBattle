@@ -9,7 +9,7 @@
 
 To install PokeBattle you must ensure you have python v2.7 installed, git installed and virtualenv installed then run the following:
 
-    git clone
+    git clone https://github.com/Cephlin/PokeBattle.git
 
     cd Pokebattle/
     virtualenv env
