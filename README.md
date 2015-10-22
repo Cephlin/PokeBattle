@@ -6,6 +6,8 @@
 === Installation ===
 ====================
 
+Please note that these instructions are designed for unix users. I really cannot be arsed to document the Windows experience... I may however in the future if requested add in some documentation I made for Windows users
+
 To install PokeBattle you must ensure you have python v2.7+ and less than v3.0
 
     git clone
