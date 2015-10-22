@@ -36,6 +36,27 @@ If you edit any models.py file you must run the following:
     python manage.py makemigrations
     python manage.py migrate
 
+You can now view the homepage at:
+
+    http://localhost:8000/
+
+You can add players and pokemon using the address:
+
+    http://localhost:8000/admin/
+
+If you add some players and Pokemon using the admin panel then you will see something like this on the homepage:
+
+    Hello, world!
+
+    Current players are:
+    red
+    blue
+
+    Current Pokemon are:
+    Charmander
+    Bulbasaur
+
+
 =============
 === Notes ===
 =============
