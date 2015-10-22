@@ -6,15 +6,18 @@
 * I really cannot be arsed to document the Windows experience... I may however in the future if requested add in some documentation I made for Windows users.
 * Be warned though that developing on Windows isn't included because it's much more of a bitch, UNIX is less effort.
 * If you __insist__ on using Windows, then I recommend using [VirtualBox](https://www.virtualbox.org/) and installing [Ubuntu 14.04 LTS](http://www.ubuntu.com/download/desktop).
+* Use the following commands to install the prerequisites on Ubuntu 14.04 LTS:
 
-To install PokeBattle you must ensure you have python v2.7 installed, git installed and virtualenv installed then run the following:
+> sudo apt-get install git git-core python2.7 python-virtualenv
 
-    git clone https://github.com/Cephlin/PokeBattle.git
+To install PokeBattle you must ensure you have python v2.7 installed, git installed and virtualenv installed then run the following (see above for Ubuntu):
 
-    cd Pokebattle/
-    virtualenv env
-    source env/bin/activate
-    pip install -r requirements.txt
+> git clone https://github.com/Cephlin/PokeBattle.git
+>
+> cd Pokebattle/
+> virtualenv env
+> source env/bin/activate
+> pip install -r requirements.txt
 
 ##Development
 
