@@ -2,7 +2,10 @@
 
 ##Installation
 
-Please note that these instructions are designed for unix users. I really cannot be arsed to document the Windows experience... I may however in the future if requested add in some documentation I made for Windows users
+Please note that these instructions are designed for [UNIX systems](https://www.youtube.com/watch?v=dFUlAQZB9Ng).
+I really cannot be arsed to document the Windows experience... I may however in the future if requested add in some documentation I made for Windows users.
+Be warned though that developing on Windows isn't included because it's much more of a bitch, UNIX is less effort.
+If you __insist__ on using Windows, then I recommend using [VirtualBox](https://www.virtualbox.org/) and installing [Ubuntu 14.04 LTS](http://www.ubuntu.com/download/desktop).
 
 To install PokeBattle you must ensure you have python v2.7 installed, git installed and virtualenv installed then run the following:
 
