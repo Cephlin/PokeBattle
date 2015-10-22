@@ -12,20 +12,23 @@
 
 To install PokeBattle you must ensure you have python v2.7 installed, git installed and virtualenv installed then run the following (see above for Ubuntu):
 
-> git clone https://github.com/Cephlin/PokeBattle.git
->
-> cd Pokebattle/
-> virtualenv env
-> source env/bin/activate
-> pip install -r requirements.txt
+'''bash
+git clone https://github.com/Cephlin/PokeBattle.git
+cd Pokebattle/
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
+'''
 
 ##Development
 
 Initially you'll need to do the following from the root dir of the project:
 
-> python manage.py migrate
-> python manage.py collectstatic
-> python manage.py createsuperuser
+'''bash
+python manage.py migrate
+python manage.py collectstatic
+python manage.py createsuperuser
+'''
 
 -----
 To run the project:
