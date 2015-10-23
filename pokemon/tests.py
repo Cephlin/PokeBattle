@@ -26,4 +26,3 @@ class Test_Pokemon(TestCase):
 
         self.assertEqual(self.pokemon.hp, 0)
         self.assertEqual(self.pokemon.fainted, True)
-

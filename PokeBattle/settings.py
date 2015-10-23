@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'battle',
     'player',
-    'pokemon'
+    'pokemon',
+    'round',
 )
 
 MIDDLEWARE_CLASSES = (

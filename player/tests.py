@@ -9,7 +9,7 @@ class Test_Player(TestCase):
         self.pokemon = Pokemon(name="Charmander")
         self.pokemon.save()
 
-        self.red = Player(username='red', team=self.pokemon) # Will need to be changed to use a real Team
+        self.red = Player(username='red', pokemon1=self.pokemon) # Will need to be changed to use a real Team
         self.red.save()
 
     def tearDown(self):
@@ -17,12 +17,12 @@ class Test_Player(TestCase):
         self.red = None
 
     def test_get_and_update_usable_pokemon(self):
-        self.red.get_and_update_usable_pokemon()
+        self.red.check_usable_pokemon()
 
         self.assertEqual(self.red.usable_pokemon, 1)
 
     def test_get_and_update_usable_pokemon_when_one_faints(self):
         self.red.team.take_damage(10)
-        self.red.get_and_update_usable_pokemon()
+        self.red.check_usable_pokemon()
 
         self.assertEqual(self.red.usable_pokemon, 0)
