@@ -5,6 +5,8 @@ class Pokemon(models.Model):
     name = models.CharField(max_length=50)
     hp = models.IntegerField(default=10)
     attack = models.IntegerField(default=3)
+    speed = models.IntegerField(default=10)
+    priority = models.IntegerField(default=1)
     fainted = models.BooleanField(default=False)
     base_pbv_value = models.IntegerField(default=23) # This would have an actual value of 115 PBV since we work in 5's
 

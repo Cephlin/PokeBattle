@@ -1,5 +1,6 @@
 from django.db import models
 from player.models import Player
+from random import random
 
 
 # Create your models here.
@@ -14,8 +15,16 @@ class Round(models.Model):
     ended_at = models.DateTimeField(auto_now_add=False, blank=True)
 
     def do_moves(self):
-        self.red.pokemon1.take_damage(self.blue.pokemon1.attack)
-        self.blue.pokemon1.take_damage(self.red.pokemon1.attack)
+        if self.blue.pokemon1.speed > self.red.pokemon1.speed:
+            self.red.pokemon1.take_damage(self.blue.pokemon1.attack)
+        elif self.red.pokemon1.speed > self.red.pokemon1.speed:
+            self.blue.pokemon1.take_damage(self.red.pokemon1.attack)
+        else:
+            if random() < 0.5:
+                self.blue.pokemon1.take_damage(self.red.pokemon1.attack)
+            else:
+                self.red.pokemon1.take_damage(self.blue.pokemon1.attack)
+
 
     def check_usable_pokemon(self):
         self.red.check_usable_pokemon()
