@@ -3,8 +3,7 @@ from player.models import Player
 from pokemon.models import Pokemon
 
 
-# Create your tests here.
-class Test_Pokemon(TestCase):
+class TestPokemon(TestCase):
     def setUp(self):
         self.pokemon = Pokemon(name="Charmander", hp=10, attack=3)
         self.pokemon.save()

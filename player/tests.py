@@ -22,7 +22,7 @@ class Test_Player(TestCase):
         self.assertEqual(self.red.usable_pokemon, 1)
 
     def test_get_and_update_usable_pokemon_when_one_faints(self):
-        self.red.team.take_damage(10)
+        self.red.pokemon1.take_damage(10)
         self.red.check_usable_pokemon()
 
         self.assertEqual(self.red.usable_pokemon, 0)
