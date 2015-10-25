@@ -36,13 +36,12 @@
         </div>
       </div>
     </nav>
-    <nav class="container">
-      <nav class="container">
-        <h1>Welcome!</h1>
-        <nav class="container row">
-          <p>
-            Current Players are:
-
+    <div class="container">
+      <div class="container">
+        <h1 classs="lead center">Welcome!</h1>
+        <div class="container row">
+          <p class="lead center">Current Players are:</p>
+          <div class="well">
             {% if players %}
               <ul class="list-group">
               {% for player in players_list %}
@@ -50,12 +49,11 @@
               {% endfor %}
               </ul>
             {% endif %}
-          </p>
-        </nav>
+          </div>
+        </div>
         <nav class="container row">
-          <p>
-            Current Pokemon are:
-
+          <p class="lead center">Current Pokemon are:</p>
+          <div class="well">
             {% if pokemon_list %}
               <ul class="list-group">
               {% for pokemon in pokemon_list %}
@@ -63,10 +61,10 @@
               {% endfor %}
               </ul>
             {% endif %}
-          </p>
+          </div>
         </nav>
-      </nav>
-    </nav>
+      </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
