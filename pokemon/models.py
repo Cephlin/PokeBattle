@@ -17,6 +17,7 @@ class Pokemon(models.Model):
         self.hp -= damage
         if self.hp <= 0:
             self.fainted = True
+            self.hp = 0
 
     def __unicode__(self):
         return self.name
