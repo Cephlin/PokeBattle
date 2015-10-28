@@ -1,6 +1,6 @@
 from django.test import TestCase
-from mock import patch
 from genx.models import Gen
+from mock import patch
 from pokemon.models import Pokemon
 from player.models import Player
 from battle.models import Battle
@@ -19,7 +19,7 @@ class TestType(TestCase):
                                      blue_defence=self.blue_defence, red_move_base=self.red_move_base,
                                      red_modifier=self.red_modifier)
         # (((((2 * level) + 10) / 250) * (attack / defence) * base) + 2) * modifier
-        # (((((2 * 5) + 10) / 250) * (10 / 10) * 50) + 2) * 1 = ((2 /25) * 50) + 2 = 4
+        # (((((2 * 75) + 10) / 250) * (123 / 163) * 65) + 2) * 6 = ((16 / 25) * (123/ 163) * 65) + 2 = 200
         self.assertEqual(int(damage), 200)
 
     """

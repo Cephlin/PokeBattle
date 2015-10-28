@@ -1,18 +1,23 @@
 from django.test import TestCase
 from player.models import Player
 from pokemon.models import Pokemon
+from type.models import Type
 
 
 # Create your tests here.
-class Test_Player(TestCase):
+class TestPlayer(TestCase):
     def setUp(self):
-        self.pokemon = Pokemon(name="Charmander")
+        self.type = Type(name="Normal")
+        self.type.save()
+
+        self.pokemon = Pokemon(name="Charmander", type=self.type)
         self.pokemon.save()
 
         self.red = Player(username='red', pokemon1=self.pokemon) # Will need to be changed to use a real Team
         self.red.save()
 
     def tearDown(self):
+        self.type = None
         self.pokemon = None
         self.red = None
 
