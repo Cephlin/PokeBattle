@@ -16,6 +16,13 @@ class Round(models.Model):
     started_at = models.DateTimeField(auto_now_add=True)
     ended_at = models.DateTimeField(auto_now_add=False, null=True)
 
+    def advance_round(self):
+        if not self.battle.winner:
+            self.do_moves()
+            self.check_usable_pokemon()
+
+            return self.winner_or_next_turn()
+
     def new_round(self):
         new_round = Round(battle=self.battle, turn=self.turn+1, red=self.red, blue=self.blue)
         new_round.save()
@@ -53,13 +60,6 @@ class Round(models.Model):
             return self.red
         else:
             return False  # No-one has lost yet
-
-    def advance_round(self):
-        if not self.battle.winner:
-            self.do_moves()
-            self.check_usable_pokemon()
-
-            return self.winner_or_next_turn()
 
     def winner_or_next_turn(self):
         winner = self.get_winner()

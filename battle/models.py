@@ -11,5 +11,3 @@ class Battle(models.Model):
 
     started_at = models.DateTimeField(auto_now_add=True)
     ended_at = models.DateTimeField(auto_now_add=False, null=True)
-
-
