@@ -9,16 +9,18 @@ from battle.models import Battle
 class TestType(TestCase):
     #@patch('genx.models.Gen', return_value=1)
     def test_get_damage(self):
-        red_level = 5
-        red_attack = 10
-        blue_defence = 10
-        red_move_base = 50
-        red_modifier = 1
-        damage = Gen.get_damage(self, red_level, red_attack, blue_defence, red_move_base, red_modifier)
-
+        self.red_level = 75
+        self.red_attack = 123
+        self.blue_defence = 163
+        self.red_move_base = 65
+        self.red_modifier = 6.00
+        self.gen = Gen()
+        damage = self.gen.get_damage(red_level=self.red_level, red_attack=self.red_attack,
+                                     blue_defence=self.blue_defence, red_move_base=self.red_move_base,
+                                     red_modifier=self.red_modifier)
         # (((((2 * level) + 10) / 250) * (attack / defence) * base) + 2) * modifier
         # (((((2 * 5) + 10) / 250) * (10 / 10) * 50) + 2) * 1 = ((2 /25) * 50) + 2 = 4
-        self.assertEqual(damage, 4)
+        self.assertEqual(int(damage), 200)
 
     """
     def do_setup(self, red_attack, red_speed, blue_attack, blue_speed):
