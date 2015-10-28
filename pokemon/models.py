@@ -8,7 +8,7 @@ class Pokemon(models.Model):
 
     hp = models.IntegerField(default=10)
     attack = models.IntegerField(default=3)
-    defence = models.IntegerField(defaults=10)
+    defence = models.IntegerField(default=10)
     special_attack = models.IntegerField(default=10)
     special_defence = models.IntegerField(default=10)
     speed = models.IntegerField(default=10)

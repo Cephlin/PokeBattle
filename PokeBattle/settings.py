@@ -39,9 +39,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'battle',
+    'genx',
+    'move',
     'player',
     'pokemon',
     'round',
+    'type',
 )
 
 MIDDLEWARE_CLASSES = (
