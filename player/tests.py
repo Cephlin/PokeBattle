@@ -1,6 +1,7 @@
 from django.test import TestCase
 from player.models import Player
 from pokemon.models import Pokemon
+from playerpokemon.models import PlayerPokemon
 from type.models import Type
 
 
@@ -10,16 +11,25 @@ class TestPlayer(TestCase):
         self.type = Type(name="Normal")
         self.type.save()
 
-        self.pokemon = Pokemon(name="Charmander", type=self.type)
+        self.pokemon = Pokemon(name="Charmander", type1=self.type)
         self.pokemon.save()
 
-        self.red = Player(username='red', pokemon1=self.pokemon) # Will need to be changed to use a real Team
+        self.player_pokemon = PlayerPokemon(pokemon=self.pokemon, hp=10)
+        self.player_pokemon.save()
+
+        self.red = Player(username='red') # Will need to be changed to use a real Team
         self.red.save()
+
+        self.player_pokemon.player = self.red
+        self.player_pokemon.pokemon = self.pokemon
+        self.player_pokemon.save()
+
 
     def tearDown(self):
         self.type = None
         self.pokemon = None
         self.red = None
+        self.player_pokemon = None
 
     def test_get_and_update_usable_pokemon(self):
         self.red.check_usable_pokemon()
@@ -27,7 +37,9 @@ class TestPlayer(TestCase):
         self.assertEqual(self.red.usable_pokemon, 1)
 
     def test_get_and_update_usable_pokemon_when_one_faints(self):
-        self.red.pokemon1.take_damage(10)
-        self.red.check_usable_pokemon()
+        self.assertEqual(self.player_pokemon.player.usable_pokemon, 1)
 
-        self.assertEqual(self.red.usable_pokemon, 0)
+        self.player_pokemon.take_damage(10)
+        self.player_pokemon.player.check_usable_pokemon()
+
+        self.assertEqual(self.player_pokemon.player.usable_pokemon, 0)
