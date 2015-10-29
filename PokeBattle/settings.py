@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'genx',
     'move',
     'player',
+    'playerpokemon',
     'pokemon',
     'round',
     'type',

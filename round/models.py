@@ -1,17 +1,17 @@
 from django.db import models
 from random import random
-
-from player.models import Player
-from battle.models import Battle
-
+from playerpokemon.models import PlayerPokemon
+from genx.models import Gen
+from itertools import izip
 
 class Round(models.Model):
-    battle = models.ForeignKey(Battle)
-    turn = models.IntegerField(default=1)
+    battle = models.ForeignKey('battle.Battle')
 
-    red = models.ForeignKey(Player, related_name='round-red+')
-    blue = models.ForeignKey(Player, related_name='round-blue+')
+    red = models.ForeignKey('player.Player', related_name='%(app_label)s_%(class)s_red')
+    blue = models.ForeignKey('player.Player', related_name='round-blue+')
     # gold and silver for 4 players
+
+    turn = models.IntegerField(default=1)
 
     started_at = models.DateTimeField(auto_now_add=True)
     ended_at = models.DateTimeField(auto_now_add=False, null=True)
@@ -30,23 +30,29 @@ class Round(models.Model):
         return new_round
 
     def do_moves(self):
-        if self.blue.pokemon1.speed > self.red.pokemon1.speed:  # Blue is quicker
-            self.red.pokemon1.take_damage(self.blue.pokemon1.attack)
-            if not self.get_winner():
-                self.blue.pokemon1.take_damage(self.red.pokemon1.attack)
-        elif self.red.pokemon1.speed > self.blue.pokemon1.speed:  # Red is quicker
-            self.blue.pokemon1.take_damage(self.red.pokemon1.attack)
-            if not self.get_winner():
-                self.red.pokemon1.take_damage(self.blue.pokemon1.attack)
-        else:  # Speed is equal
-            if random() < 0.5:
-                self.blue.pokemon1.take_damage(self.red.pokemon1.attack)
+        red_team = PlayerPokemon.objects.filter(player=self.red)
+        blue_team = PlayerPokemon.objects.filter(player=self.blue)
+
+        for red_pokemon, blue_pokemon in izip(red_team, blue_team):
+            # Blue is quicker
+            if blue_pokemon.speed > red_pokemon.speed:
+                # damage = Gen.get_damage()
+                red_pokemon.take_damage(blue_pokemon.attack)
                 if not self.get_winner():
-                    self.red.pokemon1.take_damage(self.blue.pokemon1.attack)
-            else:
-                self.red.pokemon1.take_damage(self.blue.pokemon1.attack)
+                    blue_pokemon.take_damage(red_pokemon.attack)
+            elif red_pokemon.speed > blue_pokemon.speed:  # Red is quicker
+                blue_pokemon.take_damage(red_pokemon.attack)
                 if not self.get_winner():
-                    self.blue.pokemon1.take_damage(self.red.pokemon1.attack)
+                    red_pokemon.take_damage(blue_pokemon.attack)
+            else:  # Speed is equal
+                if random() < 0.5:
+                    blue_pokemon.take_damage(red_pokemon.attack)
+                    if not self.get_winner():
+                        red_pokemon.take_damage(blue_pokemon.attack)
+                else:
+                    red_pokemon.take_damage(blue_pokemon.attack)
+                    if not self.get_winner():
+                        blue_pokemon.take_damage(red_pokemon.attack)
 
     def check_usable_pokemon(self):
         self.red.check_usable_pokemon()
