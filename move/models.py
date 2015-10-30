@@ -3,8 +3,10 @@ from type.models import Type
 
 
 class Move(models.Model):
-    base_power = models.IntegerField(null=True)
-    damage_dealing = models.BooleanField(default=False)
+    name = models.CharField(max_length=20)
+    base_power = models.IntegerField(default=0)
+    damage_dealing = models.BooleanField(default=True)
     type = models.ForeignKey(Type)
     pp = models.IntegerField(default=5)
     accuracy = models.IntegerField(default=100)
+    priority = models.IntegerField(default=0)
